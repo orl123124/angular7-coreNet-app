@@ -34,7 +34,7 @@ export class UserService {
   addUserAPI( user: User) {
     this.http.post(this.apiUrl + 'api/User/AddUser', user)
     .subscribe(resp => {
-      console.log(resp + ' test ..');
+      console.log(resp + ' test ...');
     });
 
   }
