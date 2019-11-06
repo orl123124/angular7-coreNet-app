@@ -1,0 +1,46 @@
+<form [formGroup]="myFormHome" (submit)="onSubmit(myFormHome.value)">
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
+    </div>
+
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter nombre">
+
+    </div>
+    <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" formControlName="apellido" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Apellido">
+
+    </div>
+    <div class="form-group">
+        <app-text [nombre]="'orlando'" [edad]="28"></app-text>
+    </div>
+    <div class="form-group">
+        <ngbd-datepicker-popup [parentForm]="myFormHome" [formControlNameString]="'date'" [formLabel]="'Fecha:'"></ngbd-datepicker-popup>
+    </div>
+
+    <div class="form-group">
+        <div formArrayName="telefonos">
+            <div *ngFor="let t of getTelefonos.controls; let indexPoint=index;" [formGroupName]="indexPoint">
+                <input formControlName="telefono" />
+                <a class="btn btn-link" (click)="removeTelefono(indexPoint)">Eliminar</a>
+            </div>
+            <a class="btn btn-link" (click)="addTelefono()">Add</a>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div *ngIf="flag">
+    <h1>Flag es true</h1>
+</div>
+
+
+<div>
+    <ul>
+        <li *ngFor="let user of users; let indexP of index">{{user.nombre}}</li>
+    </ul>
+</div>
